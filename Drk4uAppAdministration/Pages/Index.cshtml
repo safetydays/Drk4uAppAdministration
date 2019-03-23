@@ -1,7 +1,53 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
-<p>Hello World!</p>
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4">@ViewData["Title"]</h1>
+            <p>Welcome to the DRK4U App Administration</p>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+                    <p class="card-text">See the list of registered users of the DRK4U App at a glance.</p>
+                    <a asp-page="/Users" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">News</h5>
+                    <p class="card-text">Create news to push to the registered users of the DRK4U App</p>
+                    <a asp-page="/News" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Emergencies</h5>
+                    <p class="card-text">Add an emergency with push notification to all app users.</p>
+                    <a asp-page="/Emergencies" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Skillsets</h5>
+                    <p class="card-text">Manage the skillsets which users can assign.</p>
+                    <a asp-page="/Skillsets" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

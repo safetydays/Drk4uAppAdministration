@@ -18,6 +18,9 @@ namespace Drk4uAppAdministration.Pages {
         public string Content { get; set; }
 
         [BindProperty]
+        public Category Category { get; set; }
+
+        [BindProperty]
         public IFormFile ImageFile { get; set; }
 
         public CreateNewsModel(DatabaseContext databaseContext) {
@@ -29,7 +32,7 @@ namespace Drk4uAppAdministration.Pages {
         }
 
         public async Task<IActionResult> OnPostAsync() {
-            var news = new News(this.Title, this.Content, this.ImageFile);
+            var news = new News(this.Title, this.Content, this.Category, this.ImageFile);
             this.databaseContext.News.Add(news);
             await this.databaseContext.SaveChangesAsync();
             return RedirectToPage("./News");

@@ -9,8 +9,6 @@
 
         public DbSet<User> User { get; set; }
 
-        public DbSet<Category> Category { get; set; }
-
         public DbSet<Skillset> Skillset { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {
@@ -18,7 +16,7 @@
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<UserCategory>().HasKey(t => new { t.CategoryId, t.UserId });
+            modelBuilder.Entity<UserCategory>().HasKey(t => new { t.Category, t.UserId });
             modelBuilder.Entity<Userskillset>().HasKey(t => new { t.SkillsetId, t.UserId });
         }
 

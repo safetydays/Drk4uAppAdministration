@@ -1,5 +1,6 @@
 ﻿namespace Drk4uAppAdministration.Models {
 
+    using System;
     using System.Collections.Generic;
 
     public class User {
@@ -10,12 +11,14 @@
 
         public string Password { get; set; }
 
+        public DateTime CreatedAt { get; private set; }
+
         public List<Userskillset> Skillsets { get; set; }
 
         public List<UserCategory> Categories { get; set; }
 
         public User() {
-            // nothing to do
+            this.CreatedAt = DateTime.UtcNow;
         }
 
     }

@@ -16,15 +16,18 @@
         }
 
         [HttpGet]
-        public IEnumerable<News> Get() {
-            var news = this.databaseContext.News.OrderByDescending(x => x.CreatedAt).ToList();
-            return news;
+        public ActionResult<IEnumerable<News>> Get() {
+            return this.databaseContext.News.OrderByDescending(x => x.CreatedAt).ToList();
         }
 
-        // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id) {
-            return "value";
+        public ActionResult<News> Get(int id) {
+            var newsItem = this.databaseContext.News.SingleOrDefault(n => n.Id == id);
+            if (null == newsItem) {
+                return NotFound();
+            } else {
+                return newsItem;
+            }
         }
 
     }
