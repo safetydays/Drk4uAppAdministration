@@ -21,13 +21,14 @@
                         <th>Name</th>
                         <th>Skillsets</th>
                         <th>Mobilphone</th>
+                        <th>City</th>
                         <th>Created At</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (Model.Users.Count == 0) {
                         <tr>
-                            <td colspan="5"><i>No users available.</i></td>
+                            <td colspan="6"><i>No users available.</i></td>
                         </tr>
                     } else {
                         @foreach (var user in Model.Users) {
@@ -42,6 +43,7 @@
                                     </ul>
                                 </td>
                                 <td>@user.MobilPhone</td>
+                                <td>@user.City</td>
                                 <td>@user.CreatedAt.ToString()</td>
                             </tr>
                         }

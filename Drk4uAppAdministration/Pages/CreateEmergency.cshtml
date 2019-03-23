@@ -43,9 +43,28 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.Skillset">Required Skillsets: <span style="color: red;">*</span></label>
-                    <select asp-for="@Model.Skillset" asp-items="Html.GetEnumSelectList<Skillset>()" class="form-control" required="required"></select>
-                    <span asp-validation-for="@Model.Skillset" class="text-danger"></span>
+                    <label asp-for="@Model.City">City: <span style="color: red;">*</span></label>
+                    <input asp-for="@Model.City" class="form-control" required="required" />
+                    <span asp-validation-for="@Model.City" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="@Model.Skillsets">Required Skillsets: <span style="color: red;">*</span></label>
+                    <select multiple="multiple" asp-for="@Model.Skillsets" asp-items="Html.GetEnumSelectList<Skillset>()" class="form-control" required="required"></select>
+                    <span asp-validation-for="@Model.Skillsets" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group form-check">
+                    <input asp-for="@Model.IsSendSms" class="form-check-input">
+                    <label asp-for="@Model.IsSendSms" class="form-check-label">Send SMS</label>
+                    <br />
+                    <span asp-validation-for="@Model.IsSendSms" class="text-danger"></span>
                 </div>
             </div>
         </div>

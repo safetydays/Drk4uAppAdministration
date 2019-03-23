@@ -9,6 +9,8 @@
 
         public string Password { get; set; }
 
+        public string City { get; set; }
+
         public List<Skillset> Skillsets { get; set; }
 
         [DataType(DataType.PhoneNumber)]

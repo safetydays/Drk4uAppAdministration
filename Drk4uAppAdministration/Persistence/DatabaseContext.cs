@@ -13,12 +13,15 @@
 
         public DbSet<Image> Images { get; set; }
 
+        public DbSet<UserSkillset> UserSkillsets { get; set; }
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {
             //nothing to do
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<UserSkillset>().HasKey(t => new { t.Skillset, t.UserId });
+            modelBuilder.Entity<EmergencySkillset>().HasKey(t => new { t.Skillset, t.EmergencyId });
         }
 
     }

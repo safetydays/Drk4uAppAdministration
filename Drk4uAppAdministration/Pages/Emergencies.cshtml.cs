@@ -21,7 +21,7 @@ namespace Drk4uAppAdministration.Pages {
         }
 
         public async Task<IActionResult> OnGetAsync() {
-            this.Emergencies = await this.databaseContext.Emergencies.OrderByDescending(d => d.CreatedAt).ToListAsync();
+            this.Emergencies = await this.databaseContext.Emergencies.Include(e => e.Skillsets).OrderByDescending(d => d.CreatedAt).ToListAsync();
             return Page();
         }
 

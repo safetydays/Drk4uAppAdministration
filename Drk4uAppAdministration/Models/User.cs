@@ -12,6 +12,8 @@
 
         public string Password { get; set; }
 
+        public string City { get; set; }
+
         public DateTime CreatedAt { get; private set; }
 
         public List<UserSkillset> Skillsets { get; set; }
@@ -32,6 +34,7 @@
                 this.Skillsets.Add(new UserSkillset() { User = this, Skillset = skillset });
             }
             this.MobilPhone = userViewModel.MobilPhone;
+            this.City = userViewModel.City;
         }
 
     }
