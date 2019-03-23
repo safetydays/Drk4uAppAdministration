@@ -13,27 +13,34 @@
     </div>
     <div class="row">
         <div class="col">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>CreatedAt</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    @foreach (var newsItem in Model.News) {
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td>@newsItem.Id</td>
-                            <td>@newsItem.Title</td>
-                            <td>@newsItem.Category</td>
-                            <td>@newsItem.CreatedAt.ToString()</td>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>CreatedAt</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var newsItem in Model.News) {
+                            <tr>
+                                <td>@newsItem.Id</td>
+                                @if (null == newsItem.Image) {
+                                    <td></td>
+                                } else {
+                                    <td><img src="@newsItem.Image.ImageUrl" width="64" height="64" alt="@newsItem.Image.Name" /></td>
+                                }
+                                <td>@newsItem.Title</td>
+                                <td>@newsItem.Category</td>
+                                <td>@newsItem.CreatedAt.ToString()</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="row">

@@ -3,6 +3,7 @@
     using Drk4uAppAdministration.Models;
     using Drk4uAppAdministration.Persistence;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -17,12 +18,12 @@
 
         [HttpGet]
         public ActionResult<IEnumerable<News>> Get() {
-            return this.databaseContext.News.OrderByDescending(x => x.CreatedAt).ToList();
+            return this.databaseContext.News.Include(n => n.Image).OrderByDescending(x => x.CreatedAt).ToList();
         }
 
         [HttpGet("{id}")]
         public ActionResult<News> Get(int id) {
-            var newsItem = this.databaseContext.News.SingleOrDefault(n => n.Id == id);
+            var newsItem = this.databaseContext.News.Include(n => n.Image).SingleOrDefault(n => n.Id == id);
             if (null == newsItem) {
                 return NotFound();
             } else {

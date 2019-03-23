@@ -9,6 +9,8 @@
 
         public DbSet<User> User { get; set; }
 
+        public DbSet<Image> Images { get; set; }
+
         public DbSet<Skillset> Skillset { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {

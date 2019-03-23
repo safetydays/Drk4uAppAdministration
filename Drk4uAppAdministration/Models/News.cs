@@ -4,7 +4,6 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using System;
-    using System.IO;
 
     public class News {
 
@@ -14,7 +13,7 @@
 
         public string Content { get; set; }
 
-        public byte[] ImageFile { get; set; }
+        public Image Image { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public Category Category { get; set; }
@@ -37,14 +36,7 @@
             this.Content = content;
             this.Category = category;
             if (null != imageFile) {
-                this.ImageFile = this.GetAsByteArray(imageFile);
-            }
-        }
-
-        private byte[] GetAsByteArray(IFormFile file) {
-            using (var memoryStream = new MemoryStream()) {
-                file.CopyTo(memoryStream);
-                return memoryStream.ToArray();
+                this.Image = new Image(imageFile);
             }
         }
 

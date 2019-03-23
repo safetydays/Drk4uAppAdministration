@@ -21,7 +21,7 @@ namespace Drk4uAppAdministration.Pages {
         }
 
         public async Task<IActionResult> OnGetAsync() {
-            this.News = await this.databaseContext.News.OrderByDescending(d => d.CreatedAt).ToListAsync();
+            this.News = await this.databaseContext.News.Include(n => n.Image).OrderByDescending(d => d.CreatedAt).ToListAsync();
             return Page();
         }
 
