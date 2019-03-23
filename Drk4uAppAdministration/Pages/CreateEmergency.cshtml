@@ -1,0 +1,59 @@
+﻿@page
+@model Drk4uAppAdministration.Pages.CreateEmergencyModel
+
+@{
+    ViewData["Title"] = "Create Emergency";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4">@ViewData["Title"]</h1>
+            <hr />
+        </div>
+    </div>
+    <form method="post">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="@Model.Title">Title: <span style="color: red;">*</span></label>
+                    <input asp-for="@Model.Title" class="form-control" required="required" />
+                    <span asp-validation-for="@Model.Title" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="@Model.Description">Description: <span style="color: red;">*</span></label>
+                    <textarea asp-for="@Model.Description" class="form-control" rows="5" required="required"></textarea>
+                    <span asp-validation-for="@Model.Description" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="@Model.AmountPeople">Amount of people:</label>
+                    <input asp-for="@Model.AmountPeople" class="form-control" />
+                    <span asp-validation-for="@Model.AmountPeople" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="@Model.Skillset">Required Skillsets: <span style="color: red;">*</span></label>
+                    <select asp-for="@Model.Skillset" asp-items="Html.GetEnumSelectList<Skillset>()" class="form-control" required="required"></select>
+                    <span asp-validation-for="@Model.Skillset" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5 mb-5 mt-3">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-secondary" asp-page="/Emergencies">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

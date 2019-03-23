@@ -14,7 +14,41 @@
     </div>
     <div class="row">
         <div class="col">
-            <p>Hello World!</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Skillsets</th>
+                            <th>Amount of people</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Emergencies.Count == 0) {
+                            <tr>
+                                <td colspan="5"><i>No emergencies available.</i></td>
+                            </tr>
+                        } else {
+                            @foreach (var emergency in Model.Emergencies) {
+                                <tr>
+                                    <td>@emergency.Id</td>
+                                    <td>@emergency.Title</td>
+                                    <td>@emergency.Skillset.DisplayName()</td>
+                                    <td>@emergency.AmountPeople</td>
+                                    <td>@emergency.CreatedAt.ToString()</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" asp-page="/CreateEmergency">Create Emergency</a>
         </div>
     </div>
 </div>

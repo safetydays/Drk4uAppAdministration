@@ -19,6 +19,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Skillsets</th>
                         <th>Created At</th>
                     </tr>
                 </thead>
@@ -32,6 +33,13 @@
                             <tr>
                                 <td>@user.Id</td>
                                 <td>@user.Name</td>
+                                <td>
+                                    <ul>
+                                        @foreach (var skillset in user.Skillsets) {
+                                            <li>@skillset.Skillset.DisplayName()</li>
+                                        }
+                                    </ul>
+                                </td>
                                 <td>@user.CreatedAt.ToString()</td>
                             </tr>
                         }

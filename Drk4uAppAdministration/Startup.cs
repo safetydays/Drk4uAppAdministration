@@ -22,7 +22,9 @@ namespace Drk4uAppAdministration {
         public void ConfigureServices(IServiceCollection services) {
             services.Configure<RouteOptions>(options => { options.AppendTrailingSlash = true; options.LowercaseUrls = true; });
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddDbContextPool<DatabaseContext>(options => options.UseInMemoryDatabase("Database"));
             return;
         }

@@ -21,7 +21,7 @@ namespace Drk4uAppAdministration.Pages {
         }
 
         public async Task<IActionResult> OnGetAsync() {
-            this.Users = await this.databaseContext.User.OrderByDescending(u => u.CreatedAt).ToListAsync();
+            this.Users = await this.databaseContext.User.Include(u => u.Skillsets).OrderByDescending(u => u.CreatedAt).ToListAsync();
             return Page();
         }
 
