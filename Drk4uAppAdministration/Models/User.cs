@@ -2,6 +2,7 @@
 
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class User {
 
@@ -15,12 +16,12 @@
 
         public List<UserSkillset> Skillsets { get; set; }
 
-        public List<UserCategory> Categories { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string MobilPhone { get; set; }
 
         public User() {
             this.CreatedAt = DateTime.UtcNow;
             this.Skillsets = new List<UserSkillset>();
-            this.Categories = new List<UserCategory>();
         }
 
         public User(UserViewModel userViewModel)
@@ -30,6 +31,7 @@
             foreach (var skillset in userViewModel.Skillsets) {
                 this.Skillsets.Add(new UserSkillset() { User = this, Skillset = skillset });
             }
+            this.MobilPhone = userViewModel.MobilPhone;
         }
 
     }

@@ -18,7 +18,6 @@
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<UserCategory>().HasKey(t => new { t.Category, t.UserId });
             modelBuilder.Entity<UserSkillset>().HasKey(t => new { t.Skillset, t.UserId });
         }
 

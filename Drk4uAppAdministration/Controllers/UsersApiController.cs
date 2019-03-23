@@ -27,10 +27,14 @@
 
         [HttpPost]
         public ActionResult<User> Post([FromBody]UserViewModel userViewModel) {
-            var user = new User(userViewModel);
-            this.databaseContext.User.Add(user);
-            this.databaseContext.SaveChanges();
-            return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
+            if (!ModelState.IsValid) {
+                return BadRequest();
+            } else {
+                var user = new User(userViewModel);
+                this.databaseContext.User.Add(user);
+                this.databaseContext.SaveChanges();
+                return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
+            }            
         }
 
     }

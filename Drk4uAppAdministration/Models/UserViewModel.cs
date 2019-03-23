@@ -1,6 +1,7 @@
 ﻿namespace Drk4uAppAdministration.Models {
 
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class UserViewModel {
 
@@ -10,7 +11,8 @@
 
         public List<Skillset> Skillsets { get; set; }
 
-        public List<Category> Categories { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string MobilPhone { get; set; }
 
         public UserViewModel() {
             // nothing to do
