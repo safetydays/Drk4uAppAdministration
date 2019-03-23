@@ -1,0 +1,31 @@
+﻿@page
+@model Drk4uAppAdministration.Pages.NewsModel
+@{
+    ViewData["Title"] = "News";
+}
+
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">CreatedAt</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var newsItem in Model.News) {
+                    <tr>
+                        <td>@newsItem.Id</td>
+                        <td>@newsItem.Title</td>
+                        <td>@newsItem.CreatedAt.ToString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <a class="btn btn-primary" asp-page="/CreateNews">Create News</a>
+    </div>
+</div>
