@@ -21,22 +21,28 @@
                             <th>Image</th>
                             <th>Title</th>
                             <th>Category</th>
-                            <th>CreatedAt</th>
+                            <th>Created At</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var newsItem in Model.News) {
+                        @if (Model.News.Count == 0) {
                             <tr>
-                                <td>@newsItem.Id</td>
-                                @if (null == newsItem.Image) {
-                                    <td></td>
-                                } else {
-                                    <td><img src="@newsItem.Image.ImageUrl" width="64" height="64" alt="@newsItem.Image.Name" /></td>
-                                }
-                                <td>@newsItem.Title</td>
-                                <td>@newsItem.Category</td>
-                                <td>@newsItem.CreatedAt.ToString()</td>
+                                <td colspan="5"><i>No news available.</i></td>
                             </tr>
+                        } else {
+                            @foreach (var newsItem in Model.News) {
+                                <tr>
+                                    <td>@newsItem.Id</td>
+                                    @if (null == newsItem.Image) {
+                                        <td></td>
+                                    } else {
+                                        <td><img src="@newsItem.Image.ImageUrl" width="64" height="64" alt="@newsItem.Image.Name" /></td>
+                                    }
+                                    <td>@newsItem.Title</td>
+                                    <td>@newsItem.Category</td>
+                                    <td>@newsItem.CreatedAt.ToString()</td>
+                                </tr>
+                            }
                         }
                     </tbody>
                 </table>

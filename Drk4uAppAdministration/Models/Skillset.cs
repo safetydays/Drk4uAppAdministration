@@ -1,14 +1,14 @@
 ﻿namespace Drk4uAppAdministration.Models {
 
-    public class Skillset {
+    using System.ComponentModel.DataAnnotations;
 
-        public int Id { get; set; }
+    public enum Skillset {
 
-        public string Name { get; set; }
+        [Display(Name = "Drivers license")]
+        DriversLicense = 1,
 
-        public Skillset() {
-            // nothing to do
-        }
+        [Display(Name = "First aid")]
+        FirstAid = 2
 
     }
 

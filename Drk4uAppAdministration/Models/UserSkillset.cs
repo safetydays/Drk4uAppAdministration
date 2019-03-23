@@ -5,7 +5,6 @@
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public int SkillsetId { get; set; }
         public Skillset Skillset { get; set; }
 
         public int Level { get; set; }

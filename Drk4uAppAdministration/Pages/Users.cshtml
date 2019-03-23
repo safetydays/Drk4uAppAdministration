@@ -19,16 +19,22 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>CreatedAt</th>
+                        <th>Created At</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var user in Model.Users) {
+                    @if (Model.Users.Count == 0) {
                         <tr>
-                            <td>@user.Id</td>
-                            <td>@user.Name</td>
-                            <td>@user.CreatedAt.ToString()</td>
+                            <td colspan="3"><i>No users available.</i></td>
                         </tr>
+                    } else {
+                        @foreach (var user in Model.Users) {
+                            <tr>
+                                <td>@user.Id</td>
+                                <td>@user.Name</td>
+                                <td>@user.CreatedAt.ToString()</td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>
