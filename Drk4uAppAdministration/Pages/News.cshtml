@@ -22,12 +22,13 @@
                             <th>Title</th>
                             <th>Category</th>
                             <th>Created At</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (Model.News.Count == 0) {
                             <tr>
-                                <td colspan="5"><i>No news available.</i></td>
+                                <td colspan="6"><i>No news available.</i></td>
                             </tr>
                         } else {
                             @foreach (var newsItem in Model.News) {
@@ -41,6 +42,7 @@
                                     <td>@newsItem.Title</td>
                                     <td>@newsItem.Category</td>
                                     <td>@newsItem.CreatedAt.ToString()</td>
+                                    <td><a class="btn btn-primary btn-sm" asp-page="/NewsDetail" asp-route-id="@newsItem.Id">Detail</a></td>
                                 </tr>
                             }
                         }

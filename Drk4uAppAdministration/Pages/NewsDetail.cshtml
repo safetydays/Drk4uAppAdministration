@@ -1,0 +1,30 @@
+﻿@page "{id:int}"
+@model Drk4uAppAdministration.Pages.NewsDetailModel
+
+@{
+    ViewData["Title"] = Model.News.Title;
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4">@ViewData["Title"]</h1>
+            <hr />
+            <img class="img-fluid" src="@Model.News.Image.ImageUrl" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>@Model.News.Content</p>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-6">
+            <p class="text-left"><a asp-page="/News" class="btn btn-secondary">Back</a></p>
+        </div>
+        <div class="col-6">
+            <p class="text-right">Category: @Model.News.Category.DisplayName()</p>
+            <p class="text-right">Created At: @Model.News.CreatedAt.ToString()</p>
+        </div>
+    </div>
+</div>

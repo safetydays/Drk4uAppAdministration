@@ -63,8 +63,9 @@ namespace Drk4uAppAdministration.Pages {
         }
 
         private async Task SendSms(string description, List<EmergencySkillset> requiredEmergencySkillsets) {
-            const string accountSid = "AC9ba6ce62aae30c0f359addc9cf9f0a33";
-            const string authToken = "5ed4a45f8bc456c09c23b5978973cea0";
+            const string accountSid = "21342135215321351"; // these are just random numbers
+            const string authToken = "1251809581058105"; // these are just random numbers
+            const string fromPhoneNumber = "208510538210"; // these are just random numbers
             var skillsets = new List<Skillset>();
             foreach (var requiredEmergencySkillset in requiredEmergencySkillsets) {
                 skillsets.Add(requiredEmergencySkillset.Skillset);
@@ -77,7 +78,7 @@ namespace Drk4uAppAdministration.Pages {
                 TwilioClient.Init(accountSid, authToken);
                 var message = await MessageResource.CreateAsync(
                     body: description,
-                    from: new Twilio.Types.PhoneNumber("4915114321743"),
+                    from: new Twilio.Types.PhoneNumber(fromPhoneNumber),
                     to: new Twilio.Types.PhoneNumber(user.MobilPhone)
                 );
             }
