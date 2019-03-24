@@ -48,9 +48,7 @@ namespace Drk4uAppAdministration.Pages {
 
         private bool IsValidImage(IFormFile image) {
             var isValid = false;
-            if (image == null || image?.Length == 0) {
-                this.ModelState.AddModelError(nameof(ImageFile), "Image invalid or empty.");
-            } else if (!this.ACCEPTED_FILE_TYPES.Any(s => s == Path.GetExtension(image.FileName))) {
+            if (!this.ACCEPTED_FILE_TYPES.Any(s => s == Path.GetExtension(image.FileName))) {
                 this.ModelState.AddModelError(nameof(ImageFile), "Image in wrong format (can only be JPG, PNG, BMP oder GIF).");
             } else if (image.Length > this.MAX_BYTES) {
                 this.ModelState.AddModelError(nameof(ImageFile), $"Image size too big (max size {this.MAX_BYTES / 1024 / 1024}MB).");
